@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title></title>
+
+
+	<script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/jquery.isotope.js"></script>
+	<script type="text/javascript" src="js/wow.js"></script>
+	<script type="text/javascript" src="js/classie.js"></script>
+	<script type="text/javascript" src="js/magnific-popup.js"></script>
+    <script type="text/javascript" src="js/dat.gui.js"></script>
+   <script src="https://threejs.org/build/three.js"></script>
+  <script type="module" src="js/Three.js"></script>
+  <script  src="js/controls/OrbitControls.js"></script>
+  <script  src="js/loaders/OBJLoader.js"></script>
+  <script  src="js/loaders/MTLLoader.js"></script>
+  <script  src="js/gui.js"></script>
+  <script type="module"  src="js/lights/DirectionalLight.js"></script>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"  content="initial-scale =.4,maximum-scale = 2">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker3.standalone.css" rel="stylesheet">
+	<link href="css/estilos.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/2700394062.js"></script>
+</head>
+<style>
+	html, body {
+	   margin: 0;
+	   height: 100%;
+	}
+	#c {
+	   width: 100%;
+	   height: 100%;
+	   display: block;
+	}
+	</style>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-left " >
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav" style="color:white;">
+				<li class="">
+					<a class="">CABA:47.795</a>
+				</li>
+				<li class="">
+					<a class="">Buenos Aires:35.480</a>
+				</li>
+				<li class="">
+					<a class="">Catamarca:38</a>
+				</li>
+				<li class="">
+					<a class="">Chaco:2.446</a>
+				</li>
+				<li class="">
+					<a class="">Chubut:192</a>
+				</li>
+				<li class="">
+					<a class="">Cordoba:826</a>
+				</li>
+				<li class="">
+					<a class="">Corrientes:125</a>
+				</li>
+				<li class="">
+					<a class="">Entre Rios:376</a>
+				</li>
+				<li class="">
+					<a class="">Formosa:75</a>
+				</li>
+				<li class="">
+					<a class="">Jujuy:312</a>
+				</li>
+				<li class="">
+					<a class="">La Pampa:7</a>
+				</li>
+				<li class="">
+					<a class="">La Rioja:125</a>
+				</li>
+				<li class="">
+					<a class="">Mendoza:255</a>
+				</li>
+				<li class="">
+					<a class="">Misiones:42</a>
+				</li>
+				<li class="">
+					<a class="">Neuquen:649</a>
+				</li>
+				<li class="">
+					<a class="">Rio Negro:1031</a>
+				</li>
+				<li class="">
+					<a class="">Salta:84</a>
+				</li>
+				<li class="">
+					<a class="">San Juan:9</a>
+				</li>
+				<li class="">
+					<a class="">San Luis:12</a>
+				</li>
+				<li class="">
+					<a class="">Santa Cruz:57</a>
+				</li>
+				<li class="">
+					<a class="">Santa Fe:480</a>
+				</li>
+				<li class="">
+					<a class="">Santiago del Estero:36</a>
+				</li>
+				<li class="">
+					<a class="">Tierra del Fuego:154</a>
+				</li>
+				<li class="">
+					<a class="">Tucuman:87</a>
+				</li>
+				<li class="text-center mt-4">
+					<a class="text-center">Ultima actualizacion: 12:37 10/07/2020</a>
+				</li>
+				<li class="text-center mt-4">
+					<div class="">
+						<ul class="list-inline">
+
+							<li class="list-inline-item"><a href="https://ceneka.net/mp/d/mateoricci" class="btn btn-primary "><i class="fa fa-gift" aria-hidden="true"></i>Donar</a></li>
+							<li class="list-inline-item"><a href="https://www.instagram.com/riccimateov/" class="btn btn-primary "><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
+						</ul>
+						
+					</div>
+					
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+		<div id="c" ></div>
+
+	
+	</div>
+	<script>
+		  
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+		var loader = new THREE.OBJLoader();
+		var renderer = new THREE.WebGLRenderer();
+		container = document.getElementById( 'c' );
+		
+document.body.appendChild( container );
+
+renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth,window.innerHeight);
+container.appendChild(renderer.domElement );
+
+	
+		var luz = new THREE.AmbientLight(0xffffff,.5);
+    	scene.background = new THREE.Color("rgb(222, 222, 222)");
+		camera.position.x = -5;
+		camera.position.z = 156;
+		camera.position.y = 350;
+    	scene.add(luz);
+		var spotLight = new THREE.SpotLight( 0xffffff,.5 );
+		
+spotLight.position.set( 1200, 1000, 1000 );
+scene.add( spotLight );
+
+window.addEventListener( 'resize', onWindowResize, false );
+			
+function onWindowResize() {
+
+   camera.aspect = window.innerWidth / window.innerHeight;
+   camera.updateProjectionMatrix();
+   renderer.setSize( window.innerWidth, window.innerHeight );
+   renderer.setPixelRatio(window.devicePixelRatio);
+
+}
+		var mtlLoader = new THREE.MTLLoader();
+		mtlLoader.setMaterialOptions( { side: THREE.DoubleSide } );
+		mtlLoader.load("modelos/mapa.mtl", function(materials){
+		mtlLoader.setMaterialOptions({wireframe:true,emissive:  0xF3FFE2});
+			
+		var objLoader = new THREE.OBJLoader();
+		objLoader.setMaterials(materials);
+		
+		objLoader.load("modelos/mapa.obj", function(mesh){
+			
+			mesh.traverse( function( node ) {
+    if( node.material ) {
+		node.castShadow = true;
+		node.receiveShadow = true;
+        node.material.side = THREE.DoubleSide;
+    }
+});
+			mesh.rotation.y = -Math.PI/4;
+			scene.add(mesh);
+		});
+		
+	});
+	
+
+	console.log(camera.position.y);
+		console.log(camera.position.x);
+		console.log(camera.position.z);
+
+
+	renderer.shadowMap.enabled = true;
+	renderer.shadowMap.type = THREE.BasicShadowMap;
+
+var animate = function () {
+		requestAnimationFrame( animate );
+		renderer.render( scene, camera );
+	};
+	var control = new THREE.OrbitControls(camera, renderer.domElement);
+    control.enableDamping = true;
+    control.dampingFactor = 0.25;
+    control.enableZoom = true;
+
+    control.update();
+	animate();
+
+
+	</script>
+
+	<script>
+function paisesAfectados() {
+    var a = [];
+    $.ajax({
+        async: !0,
+        crossDomain: !0,
+        url: "https://coronavirus.msal.gov.ar/publico/d/20as/sala-de-situacion-coronavirus-acceso-publico/api/datasources",
+        method: "GET",
+        headers: {
+          
+            "X-Auth-Token": "Publico-qLfpHfdYvn9Nkv5hX93v"
+        }
+    }).done(function(e) {
+        parsed = jQuery.parseJSON(e);
+        for (var t = 0; t < parsed.affected_countries.length; t++) {
+            a[t] = parsed.affected_countries[t].replace(/\s/g, "%20"),
+            console.log(a[t]),
+            console.log(t);
+            var s = $("<option />");
+            $("#paises").append(s),
+            s.append($("<option value=" + a[t] + ">" + parsed.affected_countries[t] + "</option>"))
+        }
+    })
+}
+	</script>
+</body>
+
+
+
+</html>
